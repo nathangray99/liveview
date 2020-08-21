@@ -32,7 +32,7 @@ var CRESTServerURL 		= "localhost";
 var CRESTPort			= 8080;
 var CRESTPath			= "/crest/v1/api?gameStates=true&participants=true&eventInformation=true&timings=true&weather=true";
 //Project CARS 2 CREST2
-var CREST2ServerURL     = "https://nathangray99.github.io/liveview/index.html?crest2url=192.168.1.29&crest2port=8180";
+var CREST2ServerURL     = "localhost";
 var CREST2Port          = 8180;
 var CREST2Path			= "/crest2/v1/api?gameStates=true&participants=true&eventInformation=true&timings=true&weather=true";
 //Automobilista 2 CREST2
