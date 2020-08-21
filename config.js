@@ -9,7 +9,7 @@ var DEFAULT_MAP_TYPE = "google"; // [google|bing|osm|raw]
 var GOOGLE_MAP_KEY = "";
 
 //Activate URL parameter interpretation
-var AllowUrlParams	= false;		//[true|false]	to igrnore URL parameters for security reasons
+var AllowUrlParams	= true;		//[true|false]	to igrnore URL parameters for security reasons
 
 //Please your specific settings
 //Project CARS Dedicated Server
