@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.3.3/d3.min.js"></script>
+	<script src="./pcars_driver.js" charset="utf-8"></script>
+	
+	
+	<style type="text/css">
+		.svg {
+			width: 50px;
+			height: 20px;
+			padding-right: 100px;
+			font: 10px sans-serif;
+			color: red;
+		}
+		
+	.stations circle {
+			fill: blue;
+			stroke: black;
+			stroke-width: 1.5px;
+		}
+	.alignmentright {
+		postion:	absolute;
+		left: 		100px;		
+	}
+		
+	</style>
+</head>
+<!--
+	http://christopheviau.com/d3_tutorial/
+-->
+<body>
+
+		
+	<div data-role="page">
+  <div data-role="header" align="right">
+    <div class="ui-grid-c">
+	    <div  class="ui-block-e"><a class="ui-shadow ui-btn ui-corner-all ui-icon-gear ui-btn-icon-notext ui-btn-inline">Button</a></div>
+	</div>
+  </div>
+
+  <div data-role="main" class="ui-content">
+    <p>HTML Content</p>
+  </div>
+
+ 
+
+  </div>
+</div>
+</div>
+
+
+
+	<div class="stations">
+		<svg class="marker markertext" style="left: 150px; top:250px;">
+			<circle r="4.5" cx="5" cy="5" class="CSS_RacePos_25 CSS_Vehicle_GT3"></circle>
+			<text x="0" y="15" fill="red">I love SVG!</text>
+		</svg>
+		<svg class="marker markertext" style="left: 150px; top:250px;">
+			<circle r="4.5" cx="5" cy="5" class="CSS_RacePos_25 CSS_Vehicle_GT3"></circle>
+			<text x="0" y="15" fill="red">I love SVG!</text>
+		</svg>
+	</div>	
+	
+    <div id="viz1"></div>
+    <div id="viz2"></div>
+    <div>
+    	Stylesheet's contents:
+    	<textarea id="output"></textarea>
+	</div>
+	
+
+    <input type="checkbox" id="checkbox1" />
+
+    <script type="text/javascript" charset="utf-8">
+	
+
+    
+    var data = [{
+			"globals":{
+					"joinable":"true",
+					"lobbyid":109775242963700000,
+					"max_member_count":3,
+					"now":1459966198,
+					"state":"Running",
+					"attributes":{
+						"TrackId":1768660198,
+						"GridSize":10
+						},
+					"sensorLayer_UpdateDelta":557
+					},
+			"participants":[
+					{
+ 						"aSectormapping":{"0":"0","1":"2","2":"3","3":"1"},
+ 						"RefID":36608,
+ 						"Name":"Benjamin Hall",
+ 						"IsPlayer":0,
+ 						"GridPosition":7,
+ 						"PosX":-633540,
+ 						"VehicleId":"Ruf CTR"
+						},
+						{
+ 						"aSectormapping":{"0":"0","1":"2","2":"3","3":"1"},
+ 						"RefID":36608,
+ 						"Name":"Benjamin Höll??Ü",
+ 						"IsPlayer":0,
+ 						"GridPosition":7,
+ 						"PosX":-633540,
+ 						"VehicleId":"Ruf CTR"
+ 					}],
+     	}];
+
+var data2 = JSON.stringify(data);
+
+console.log("JSON.stringify: ", data2 );	
+console.log("JSON.parse: ", JSON.parse( data2 ) );  
+
+///////////////////////////////////////////////////
+var obj = {"key":"füßchen", "some": [1,2,3]}
+
+var json = JSON.stringify(obj)
+json  = json.replace(/[\u007F-\uFFFF]/g, function(chr) {
+    return "\\u" + ("0000" + chr.charCodeAt(0).toString(16)).substr(-4)
+})
+
+console.log("JSON: ", json);
+console.log("JSON.parse(): " , JSON.parse(json) );
+    
+///////////////////////////////////////////////////    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+//Test Object;
+
+	var DriverDummy		= new PCARSdriver();
+		DriverDummy.SetExampleData();
+
+
+//draw circle
+    var sampleSVG = d3.select("#viz1")
+        .append("svg");
+ //       .attr("width", 200)
+ ///       .attr("height", 200);    
+
+    sampleSVG.append("circle")
+        .style("stroke", "gray")
+        .style("fill", "white")
+        .attr("r", 40)
+        .attr("cx", 50)
+        .attr("cy", 50)
+        .on("mouseover", function(){
+		d3.select(this)
+	//		.style("fill", "blue")
+			.transition()
+                        .duration(750)
+                        .attr("r", function(d) { 	var tmp = d3.select(this);
+							console.log("--- this1: ", tmp.attr("r")   ); 
+							console.log("--- this2: ", tmp[0][0].attributes.r   );
+
+							if (tmp.attr("r") <= 100) {
+								return  tmp.attr("r") + 1;
+							}else{
+								return  10;
+							}
+						});
+		})
+       .on("mouseout", function(){d3.select(this).style("fill", "white");})
+	.on("click", function(){d3.select(this).style("fill", "red");});
+
+var sampleSVG2 = d3.select("#viz2")
+        .append("svg");
+//        .attr("width", 150)
+//        .attr("height", 150);
+
+    sampleSVG2.append("circle")
+        .style("stroke", "gray")
+        .style("fill", "grey")
+        .attr("r", 20)
+        .attr("cx", 30)
+        .attr("cy", 30)
+
+var sampleSVG3 = d3.select("#viz2")
+        .append("svg");
+//        .attr("width", 150)
+//        .attr("height", 150);
+
+    sampleSVG3.append("circle")
+        .attr("r", 20)
+        .attr("cx", 30)
+        .attr("cy", 30)
+        .attr("class", "TestCSSClass");
+        
+        
+
+// D3 handling to select all svgs
+
+	var svgs =      d3.select("body").selectAll("svg").each( function(obj) { 
+
+				var tmp_obj = d3.select(this);
+
+				console.log("---------- svg object:" , tmp_obj);
+
+				tmp_obj.selectAll("circle")
+				.transition()
+	    			.duration(750)
+				.attr("r", function(d) { return 26; });
+
+
+				if (0)
+				{
+					tmp_obj.remove();
+				}
+				
+
+                        });
+	console.log(" --- svgs: " , svgs);
+
+/*
+	 var marker = _div.selectAll("svg")
+     .data(_data, function (d) { return d.Key; })
+     .each(transform) // update existing markers
+      .enter().append("svg:svg")
+     .each(transform)
+     //.attr("class", "marker");
+ 		.attr("class", function (d){ return d.CSSTextClases });
+*/
+	
+function setStyle(cssText) {
+	var sheet = document.createElement('style');
+	sheet.type = 'text/css';
+	/* Optional */ window.customSheet = sheet;
+	(document.head || document.getElementsByTagName('head')[0]).appendChild(sheet);
+    return (setStyle = function(cssText, node) {
+		if(!node || node.parentNode !== sheet)
+            return sheet.appendChild(document.createTextNode(cssText));
+		node.nodeValue = cssText;
+		return node;
+	})(cssText);
+};
+var vTestCSSClass;
+
+// Event handling Checkboxes
+
+$('#checkbox1').click(function () {
+
+	console.log("Checkbox click:" , this);
+	
+	if ($('#checkbox1').is(':checked') == false) {
+		
+		//remove a class
+		//ELEMENT.classList.remove("TestCSSClass");
+		//overwirte settings within object -> not we want to do
+		//$('circle.TestCSSClass').css('fill' , 'white');
+		
+		//$('circle.TestCSSClass').removeClass('circle.TestCSSClass').addClass('someClassReplacement');
+		
+		/*
+		document.styleSheets[0].cssRules[0].cssText = "\
+		     #TestCSSClass {
+
+		     }";
+		
+		*/
+		
+		// http://stackoverflow.com/questions/7125453/modifying-css-class-property-values-on-the-fly-with-javascript-jquery
+		// http://jsfiddle.net/hdU8s/10/
+/*
+		var rule1, rule2,
+        output = document.getElementById('output');
+		console.log("rule1 / rule2 / output" , rule1 + " / " +  rule2 + " / " + output);
+		*/
+		console.log("+++++++ TestCSSClass " , vTestCSSClass);
+		setStyle( '', vTestCSSClass );
+
+		
+	}
+
+	if ($('#checkbox1').is(':checked') == true) {
+
+             //alert(" is checked");
+             
+         ////// 1st solution
+	     //$('#TestCSSClass').css('fill', 'green') ;
+        
+         ////// 2nd solution -> working fine
+/*
+             $.injectCSS({
+            	    "circle.TestCSSClass": {
+            	        "fill": "yellow"
+            	    }
+            	});
+*/         
+
+             vTestCSSClass = setStyle(
+                     '.TestCSSClass{ fill: grey; } \n',
+                     vTestCSSClass
+                 );       
+     }
+})
+
+
+
+///////////////////////////////SVG Text changes////////////////////////////////////////////////////
+/// http://www.jeromecukier.net/blog/2013/03/05/d3-tutorial-at-strata-redux/ 
+/// https://bost.ocks.org/mike/selection/ 
+/// https://github.com/mbostock/d3/tree/master/src/selection
+var _div;
+var marker;
+var _data;
+
+
+var _data = ['10','60'];
+marker = d3.select(".stations")
+			.selectAll("svg")
+			.selectAll("text")
+			.data(_data)
+			.each(function(d, i) 
+				{ 
+					console.log("++++ each() d/i: " , d , " / " + i)
+					return d; 
+				
+				})
+			.text(function(d,i)
+				{
+					console.log("++++ text() d/i: " , d , " / " + i)
+					return "Test" + i + d ;
+				}
+			);
+console.log("----- _marker: ", marker);
+
+// second try with each
+
+var _data2  = [
+               {key: "A", label: "SVG1"},
+               {key: "E", label: "SVG2"}
+             ];
+
+var marker2 = d3.select(".stations")
+.selectAll("svg")
+.selectAll("text")
+.data(_data, function (d) { return d.key })
+.enter()
+.append("p")
+.text(function(d,i)
+	{
+		console.log("++++ text() 2 d/i: " , d , " / " + i)
+		return "Test" + i + d ;
+	});
+
+console.log("----- _marker2: ", marker2);
+
+
+///////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////
+////////////// Example 3
+
+var _data3  = [
+				{key: 4 ,  label: "SVG4"},
+				{key: 8 ,  label: "SVG8"}
+			];
+		
+var selection = d3.select("body").selectAll("p")
+	.data(_data3, function (d){ return d; })
+	.enter().append("p")
+	.text(function(d) { return "I’m number " + d.label + "!"; });
+console.log("----- current Output: selection ", selection);
+
+////// expand list ob objects
+var _data31  = [
+				{key: 4 ,  label: "SVG4"},
+				{key: 8 ,  label: "SVG8"},
+				{key: 15,  label: "SVG15"}
+			];
+var selection2 = d3.select("body").selectAll("p")
+.data(_data3, function (d){ return d.key; })
+.enter().append("p")
+.text(function(d) { return "I’m number " + d.label + "!"; });
+console.log("----- current Output: selection2 ", selection2);	
+
+
+//Example 3 Update mit vertauschte Reihenfolge aber OHNE enter().append() aufruf
+ var _data4  = [
+    		{key: 15,  label: "SVG1515"},
+			{key: 4 ,  label: "SVG44"},
+			{key: 8 ,  label: "SVG88"}
+		];
+		
+ var tmp1 = d3.select("body").selectAll("p")
+	.data(_data4, function (d){	return d.key;})
+	.text(function(d) 
+			{ 
+				console.log("----- _marker3-2: (d)  " , d)
+				return "I’m number " + d.label + "!"; 
+			});
+ 
+ console.log("----- _marker3-3: tmp1  " , tmp1);
+ 
+ 
+ 
+ var data = [{
+	 			"globals":{
+	 					"joinable":"true",
+	 					"lobbyid":109775242963700000,
+	 					"max_member_count":3,
+	 					"now":1459966198,
+	 					"state":"Running",
+	 					"attributes":{
+	 						"TrackId":1768660198,
+	 						"GridSize":10
+	 						},
+	 					"sensorLayer_UpdateDelta":557
+	 					},
+	 			"participants":[
+							{
+		 						"aSectormapping":{"0":"0","1":"2","2":"3","3":"1"},
+		 						"RefID":36608,
+		 						"Name":"Benjamin Hall",
+		 						"IsPlayer":0,
+		 						"GridPosition":7,
+		 						"PosX":-633540,
+		 						"VehicleId":"Ruf CTR"
+	 						},
+	 						{
+		 						"aSectormapping":{"0":"0","1":"2","2":"3","3":"1"},
+		 						"RefID":36608,
+		 						"Name":"Benjamin Höll",
+		 						"IsPlayer":0,
+		 						"GridPosition":7,
+		 						"PosX":-633540,
+		 						"VehicleId":"Ruf CTR"
+		 					}],
+             	}];
+ 
+var data2 = JSON.stringify(data);
+
+console.log("JSON.stringify: ", data2 );					
+ 
+ 
+  
+
+/*
+marker.data(_data)
+	  .style("font-size", function(d,i){ 
+			console.log("+++++ d/i:  " , d , " / "+ i);
+			return d+"px";
+	})	
+
+
+marker.append("text")
+	.text(function (d) {
+			return "Label2";
+
+	})
+*/
+
+
+    </script>
+</body>
+</html>
+
+
