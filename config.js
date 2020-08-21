@@ -32,7 +32,7 @@ var CRESTServerURL 		= "localhost";
 var CRESTPort			= 8080;
 var CRESTPath			= "/crest/v1/api?gameStates=true&participants=true&eventInformation=true&timings=true&weather=true";
 //Project CARS 2 CREST2
-var CREST2ServerURL     = "http://localhost:8180/crest2/v1/api";
+var CREST2ServerURL     = "http://localhost:8180/crest2/v1/api?crest2url=192.168.0.1&crest2port=8180";
 var CREST2Port          = 8180;
 var CREST2Path			= "/crest2/v1/api?gameStates=true&participants=true&eventInformation=true&timings=true&weather=true";
 //Automobilista 2 CREST2
@@ -67,7 +67,7 @@ var aAPIMODEMAPPING =
 
 
 //default API mode, possible values: DS, CREST, DS2, CREST2, DS-AMS2, CREST2-AMS2 or DEMO
-var APIMODE   		=   "CREST2";	// Default API Mode
+var APIMODE   		=   "DEMO";	// Default API Mode
 
 //hide or unhide elements
 var SHOWTRACKLIST 		=	false;	// [true|false]
