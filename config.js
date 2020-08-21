@@ -28,7 +28,7 @@ var DsAMS2Path			= "/api/session/status?attributes&members&participants";
 var DsTracksPath		= "/api/list/tracks";
 var DsVehiclesPath		= "/api/list/vehicles";
 //Project CARS CREST
-var CRESTServerURL 		= "https://nathangray99.github.io/liveview/?cresturl=192.168.0.1&crestport=8080;
+var CRESTServerURL 		= "https://nathangray99.github.io/liveview/?cresturl=192.168.0.1&crestport=8080";
 var CRESTPort			= 8080;
 var CRESTPath			= "/crest/v1/api?gameStates=true&participants=true&eventInformation=true&timings=true&weather=true";
 //Project CARS 2 CREST2
