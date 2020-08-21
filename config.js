@@ -6,7 +6,7 @@ var SCRIPTVERSION	= "0.5.3";
 // Defines the default MAP Type
 var DEFAULT_MAP_TYPE = "google"; // [google|bing|osm|raw]
 //put in your custom google map key or user url parameter api_key=
-var GOOGLE_MAP_KEY = "";
+var GOOGLE_MAP_KEY = "https://nathangray99.github.io/liveview/?api_key=AIzaSyBbRJTF_d8uSMvaFLfCWSnBUasBXn32k5A";
 
 //Activate URL parameter interpretation
 var AllowUrlParams	= true;		//[true|false]	to igrnore URL parameters for security reasons
