@@ -6,7 +6,7 @@ var SCRIPTVERSION	= "0.5.3";
 // Defines the default MAP Type
 var DEFAULT_MAP_TYPE = "google"; // [google|bing|osm|raw]
 //put in your custom google map key or user url parameter api_key=
-var GOOGLE_MAP_KEY = "AIzaSyBbRJTF_d8uSMvaFLfCWSnBUasBXn32k5A";
+var GOOGLE_MAP_KEY = "";
 
 //Activate URL parameter interpretation
 var AllowUrlParams	= false;		//[true|false]	to igrnore URL parameters for security reasons
