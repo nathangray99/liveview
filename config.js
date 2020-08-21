@@ -6,10 +6,10 @@ var SCRIPTVERSION	= "0.5.3";
 // Defines the default MAP Type
 var DEFAULT_MAP_TYPE = "google"; // [google|bing|osm|raw]
 //put in your custom google map key or user url parameter api_key=
-var GOOGLE_MAP_KEY = "https://nathangray99.github.io/liveview/?api_key=AIzaSyBbRJTF_d8uSMvaFLfCWSnBUasBXn32k5A";
+var GOOGLE_MAP_KEY = "AIzaSyBbRJTF_d8uSMvaFLfCWSnBUasBXn32k5A";
 
 //Activate URL parameter interpretation
-var AllowUrlParams	= true;		//[true|false]	to igrnore URL parameters for security reasons
+var AllowUrlParams	= false;		//[true|false]	to igrnore URL parameters for security reasons
 
 //Please your specific settings
 //Project CARS Dedicated Server
@@ -28,7 +28,7 @@ var DsAMS2Path			= "/api/session/status?attributes&members&participants";
 var DsTracksPath		= "/api/list/tracks";
 var DsVehiclesPath		= "/api/list/vehicles";
 //Project CARS CREST
-var CRESTServerURL 		= "https://nathangray99.github.io/liveview/?cresturl=192.168.1.29&crestport=8080";
+var CRESTServerURL 		= "localhost";
 var CRESTPort			= 8080;
 var CRESTPath			= "/crest/v1/api?gameStates=true&participants=true&eventInformation=true&timings=true&weather=true";
 //Project CARS 2 CREST2
