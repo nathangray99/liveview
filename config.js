@@ -189,7 +189,7 @@ var CSSDEFINITIONS = {
 
 //Automatic CSV/PDF Export of all session results after a race weekend, a download dialog will pop up
 //The Export is called if the SessionState changes to "PostRace"
-var autoExport = "false";
+var autoExport = "true";
 var ExportType = "PDF"; //[CSV|PDF|BOTH]
 var PDFstyles = {
 	globalHeader: {
